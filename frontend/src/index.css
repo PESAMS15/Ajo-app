@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
+.bg-cus{
+  background-image: url(./Assets/1-water-money-plant.png);
+  background-color: rgba(0, 0, 0, 0.184);
+  background-blend-mode: darken;
+  height: 100vh;
+  background-position: fixed;
+}
+
+.dark{
+  color: white;
+  background-color: rgb(32, 32, 32);
+}
