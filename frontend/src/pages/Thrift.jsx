@@ -2,17 +2,22 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams,  } from 'react-router-dom'
 
-function ThriftDetails({  }) {
+function ThriftDetails({ oke }) {
     const route = useParams();
     const id = route.id 
     console.log(id)
   const [thrift, setThrift] = useState(null);
 
   useEffect(() => {
+
     axios.get(`http://localhost:6650/thrifts/thrift/${id}`)
     .then((res)=> setThrift(res.data.thrift))
    
+   
   }, []);
+  function oke(params) {
+    
+  }
   console.log(thrift)
 
   if (!thrift) {

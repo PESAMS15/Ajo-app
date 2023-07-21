@@ -23,7 +23,7 @@ function SignIn() {
             console.log(res)
             localStorage.setItem("token", res.data.token)
             alert(res.data.message)
-            navigate(-1)
+            navigate("/dashboard")
         }).catch((err) => {
             console.log(err)
             alert(err.response.data.message)

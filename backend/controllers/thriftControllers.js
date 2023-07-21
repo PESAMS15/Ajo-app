@@ -9,8 +9,10 @@ const thriftModel = require("../models/thriftModel");
     // const thriftAdmin = "okna"
 
     let duration;
+    let amt;
     if (subscriptionPlan === 'daily') {
       duration = 10;
+      
     } else if (subscriptionPlan === 'monthly') {
       duration = 30;
     } else if (subscriptionPlan === 'yearly') {
@@ -20,6 +22,7 @@ const thriftModel = require("../models/thriftModel");
       return res.status(400).send({ message: 'Invalid subscription plan' });
     }
     let amountPerUser = amount / maxMem
+    amt = amountPerUser / duration
   
     try {
       const existingThrift = await thriftModel.findOne({ thriftName });
@@ -76,11 +79,12 @@ const getUserThrifts = async (req, res) => {
     const { userName } = req.body // Assuming you have the user's userName stored in req.user.userName
 
     // Find all the thrifts where the user is a member
-    const userThrifts = await thriftModel.find({ thriftMembers: userName });
+    const userThrifts = await thriftModel.find({ thriftMembers: { $in: [userName] } });
+    console.log(userName)
 
-    res.status(200).json({ thrifts: userThrifts });
+    res.status(200).send({ userThrifts });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to retrieve user thrifts' });
+    res.status(500).send({ message: 'Failed to retrieve user thrifts' });
   }
 };
 
