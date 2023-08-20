@@ -9,6 +9,7 @@ import SignIn from './pages/Signin';
 import "react-toastify/dist/ReactToastify.css"
 // import chats from './pages/Chats';
 import Dashboard from './pages/Dashboard';
+import "react-toastify/dist/ReactToastify.css"
 import Home from './pages/Home';
 import Create from './pages/Create';
 import ThriftDetails from './pages/Thrift';
@@ -17,6 +18,8 @@ import store from './Redux/store';
 import { Provider } from 'react-redux';
 import Dash from './components/Dash';
 import Thrifts from './components/Thrifts';
+import Wallet from './pages/Wallet';
+import Join from './pages/Join';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -27,12 +30,16 @@ root.render(
       <Route path='/' element={<Home/>}/>
         <Route path='/signup' element={<App/>}/>
         <Route path='/create' element={<Create/>}/>
+       
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/dashboard' element={<Dashboard/>}>
+          
            <Route path='' element={<Dash />} />
             <Route path='thrifts' element={<Thrifts />}>
           </Route>
           <Route path='thrifts/:id' element={<ThriftDetails />}/>
+          <Route path='join/:id' element={<Join />}/>
+          <Route path='pay' element={<Wallet />} />
           
         </Route>
         <Route path='/chats' element={<chats />}/>

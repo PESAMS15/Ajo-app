@@ -22,7 +22,7 @@ const sendMail = async (email, userName) => {
     const mailOptions = {
         from: process.env.Gmail,
         to: email,
-        subject: "PGI —— Welcome Message",
+        subject: "PGI —— THrift Successfully Created",
         text: "PGI",
         html: contactTemplate,
     };

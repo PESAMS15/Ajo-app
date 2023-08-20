@@ -2,11 +2,15 @@ import React from 'react'
 import axios from "axios"
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../components/Loader';
+import { ToastContainer, toast } from 'react-toastify'
 
 const Create = () => {
   const [selectedPlan, setSelectedPlan] = useState('');
   const [name, setname] = useState("")
   const [id, setid] = useState("")
+  const [loader, setloader] = useState(true)
+
   const [amount, setamount] = useState("")
   const [maxmem, setmaxmem] = useState("")
   const [usname, setusname] = useState("")
@@ -29,11 +33,14 @@ const Create = () => {
               Authorization: `bearer ${token}`
           }
       }).then((res) => {
+        setloader(false)
           console.log(res.data)
-          setusname(res.data.username)
+          setusname(res.data.checkUser.userName)
           
       }).catch((err) => {
-          alert(err.response.data.message)
+        setloader(false)
+          // alert(err.response.data.message)
+          toast.error(err.response.data.message)
           console.log(err)
           navigate("/signin")
       })
@@ -51,25 +58,32 @@ const Create = () => {
   }
   let url = "http://localhost:6650/thrifts/create"
   const creat = ()=>{
+        setloader(true)
          console.log(details)
         axios.post(url, details).then((res) => {
+          setloader(false)
           console.log(res.data)
+          // let id = res.data.thrift._id
           setid(res.data.thrift._id)
-          console.log(id)
-          alert(res.data.message)
-          
 
+          console.log(id)
+          // alert(res.data.message)
+          toast.success(res.data.message)
+          
         })
         .then(setInterval(() => {
-          navigate(`/thrift/${id}`)
-        }, 3000))
+          navigate(`/dashboard/thrifts`)
+        }, 4000))
         .catch((err)=>{
-          alert(err.response.data.message)  
+          setloader(false)
+          // alert(err.response.data.message)  
+          toast.error(err.response.data.message)
         })
   
   }
   return (
     <div className='py-4'>
+      {loader? <Loader />: ""}
         <h1 className='text-4xl font-bold text-center  mt-10'>Create a Thrift</h1>
         <div className='md:w-3/4 mx-auto md:mt-16 mt-3 md:shadow-lg md:p-5'>
            <div className="md:flex w-full px-3 gap-16 mt-10  md:my-5 justify-between">
@@ -101,6 +115,18 @@ const Create = () => {
            <button className='w-full bg-indigo-500 text-white rounded-xl my-2 py-3' onClick={creat}>Submit</button>
 
         </div>
+        <ToastContainer 
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
     </div>
   )
 }
