@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.388776ca.css",
+    "main.js": "/static/js/main.951d6504.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/security.jpeg": "/static/media/security.6434fdfa772802154d5d.jpeg",
+    "static/media/1-water-money-plant.png": "/static/media/1-water-money-plant.072307972033f0f02ce3.png",
+    "static/media/pricing.jpeg": "/static/media/pricing.e294437e7b7daac4d1bc.jpeg",
+    "static/media/support.jpeg": "/static/media/support.7b77da418c955e238b0b.jpeg",
+    "static/media/interface.jpeg": "/static/media/interface.ebc3ebd7c9cf56dc3617.jpeg",
+    "static/media/investment.jpeg": "/static/media/investment.42b1c20da6689eac3c0f.jpeg",
+    "static/media/guidance.jpeg": "/static/media/guidance.3eae91e7cecc18ebc60c.jpeg",
+    "static/media/img.jpeg": "/static/media/img.41642eba32dab9770e43.jpeg",
+    "static/media/Free_Sample_By_Wix__1_-removebg-preview.png": "/static/media/Free_Sample_By_Wix__1_-removebg-preview.b841f55ec0f8baab79e8.png",
+    "static/media/pgi-white.png": "/static/media/pgi-white.934a61f220588325352a.png",
+    "index.html": "/index.html",
+    "main.388776ca.css.map": "/static/css/main.388776ca.css.map",
+    "main.951d6504.js.map": "/static/js/main.951d6504.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.388776ca.css",
+    "static/js/main.951d6504.js"
+  ]
+}
