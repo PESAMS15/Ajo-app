@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../Assets/pgi-white.png';
-import { useSpring, animated } from 'react-spring';
+import {  animated } from 'react-spring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import securityImage from '../Assets/security.jpeg';
@@ -20,25 +20,21 @@ const LandingPage = () => {
 //   const themeClass = darkMode ? 'dark' : '';
   const themeClass = darkMode ? 'dark' : '';
 
-  const fadeIn = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    config: { duration: 1000 },
-  });
+ 
 
   return (
     <div className={`bg-gray-100   ${themeClass}`}>
-      <animated.header style={fadeIn} className={`bg-white py-8 px-4 ${themeClass}`}>
+      <animated.header  className={`bg-white py-8 px-4 ${themeClass}`}>
         <img src={logo} alt="PGI Logo" className="mx-auto" />
         <h1 className={`text-4xl text-center font-semibold mb-2 ${themeClass}`}>
           Welcome to Persy Grow Investment Limited (PGI)!
         </h1>
         <p className={`text-gray-600 text-center ${themeClass}`}>Your Trusted Partner for Thrift Management</p>
       </animated.header>
-      <animated.section style={fadeIn} className={`py-12 px-4 ${themeClass}`}>
+      <animated.section  className={`py-12 px-4 ${themeClass}`}>
         <h2 className={`text-2xl font-semibold mb-8 text-center ${themeClass}`}>Why Choose PGI?</h2>
         <div className="flex flex-wrap justify-center">
-          <animated.div style={fadeIn} className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
+          <animated.div  className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
             <img src={securityImage} alt="Security" className="w-full h-60" />
             <div className="px-6 py-4">
               <h3 className={`text-xl font-semibold mb-2 ${themeClass}`}>High Security</h3>
@@ -47,7 +43,7 @@ const LandingPage = () => {
               </p>
             </div>
           </animated.div>
-          <animated.div style={fadeIn} className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
+          <animated.div  className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
             <img src={interfaceImage} alt="Interface" className="w-full h-60" />
             <div className="px-6 py-4">
               <h3 className={`text-xl font-semibold mb-2 ${themeClass}`}>User-Friendly Interface</h3>
@@ -56,7 +52,7 @@ const LandingPage = () => {
               </p>
             </div>
           </animated.div>
-          <animated.div style={fadeIn} className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
+          <animated.div  className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
             <img src={investmentsImage} alt="Investments" className="w-full h-60" />
             <div className="px-6 py-4">
               <h3 className={`text-xl font-semibold mb-2 ${themeClass}`}>Thrift Creations</h3>
@@ -65,7 +61,7 @@ const LandingPage = () => {
               </p>
             </div>
           </animated.div>
-          <animated.div style={fadeIn} className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
+          <animated.div  className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
             <img src={pricingImage} alt="Pricing" className="w-full h-60" />
             <div className="px-6 py-4">
               <h3 className={`text-xl font-semibold mb-2 ${themeClass}`}>Custom Pricing</h3>
@@ -74,7 +70,7 @@ const LandingPage = () => {
               </p>
             </div>
           </animated.div>
-          <animated.div style={fadeIn} className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
+          <animated.div  className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
             <img src={guidanceImage} alt="Guidance" className="w-full h-60" />
             <div className="px-6 py-4">
               <h3 className={`text-xl font-semibold mb-2 ${themeClass}`}>Expert Guidance</h3>
@@ -83,7 +79,7 @@ const LandingPage = () => {
               </p>
             </div>
           </animated.div>
-          <animated.div style={fadeIn} className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
+          <animated.div  className={`max-w-sm rounded-lg overflow-hidden shadow-lg mx-4 mb-6 ${themeClass}`}>
             <img src={supportImage} alt="Support" className="w-full h-60" />
             <div className="px-6 py-4">
               <h3 className={`text-xl font-semibold mb-2 ${themeClass}`}>24/7 Customer Support</h3>
@@ -94,7 +90,7 @@ const LandingPage = () => {
           </animated.div>
         </div>
       </animated.section>
-      <animated.section style={fadeIn} className={`bg-gray-800 text-white py-12 px-4 `}>
+      <animated.section  className={`bg-gray-800 text-white py-12 px-4 `}>
         <h2 className={`text-2xl font-semibold mb-8 text-center `}>
           Start Your Financial Journey Today
         </h2>
@@ -109,7 +105,7 @@ const LandingPage = () => {
           </button>
         </div>
       </animated.section>
-      <animated.footer style={fadeIn} className={`bg-gray-900 text-white py-8 px-4 `}>
+      <animated.footer  className={`bg-gray-900 text-white py-8 px-4 `}>
         <div className="container mx-auto md:flex md:justify-between">
           <div className="mb-6 md:mr-10">
             <h3 className={`text-lg font-semibold mb-4 $`}>About PGI</h3>

@@ -12,13 +12,15 @@ import Thrifts from '../components/Thrifts';
 import { fetchingError, fetchingProduct, fetchingSuccessful } from '../Redux/user'
 import { fetchingSuccess } from '../Redux/thrifts';
 import Loader from '../components/Loader';
+import { fetchSuccess } from '../Redux/transactions';
 
 
 
 const Dashboard = () => {
+    
      const dispatch = useDispatch()
   const { isFetching, user, fetchingFailed } = useSelector((state)=> state.user)
-    const uri = "http://localhost:6650/users/verify"
+    const uri = "https://persy-grow-investment.onrender.com/users/verify"
     const [data, setdata] = useState(null)
     const [loader, setloader] = useState(true)
     
@@ -37,11 +39,14 @@ const Dashboard = () => {
         }).then((res) => {
             dispatch(fetchingSuccessful(res.data.checkUser))
             // thrift()
-            axios.post("http://localhost:6650/thrifts//allthrifts", {userName: res.data.checkUser.userName}).then((res) => {
-                setloader(false)
+            axios.post("https://persy-grow-investment.onrender.com/thrifts//allthrifts", {userName: res.data.checkUser.userName}).then((res) => {
                 // console.log(res.data)
                 dispatch(fetchingSuccess(res.data.userThrifts))
               })
+            axios.post("https://persy-grow-investment.onrender.com/thrifts/transactions", {userName: res.data.checkUser.userName}).then((res)=>{
+                setloader(false)
+                dispatch(fetchSuccess(res.data.transactions))
+            })
 
         }).then((res)=>{
             
@@ -109,24 +114,25 @@ const Dashboard = () => {
         <>
             {
                 loader? <Loader /> :
-                <div className='flex justify-between bg-slate-50 pr-16 pt-5'>
-                <div className="flex">
-                <Nav />
-                <div className="text-gray-700 text-2xl min-w-fit bg-blac z-10 mt-10 font-semibold h-fit ">
+                <div className='md:flex  max-w-full justify-between bg-slate-50 md:pr-16 md:pt-5'>
+                <Nav balance={balance} />
+                {/* <div className="text-gray-700 text-2xl min-w-fit bg-blac z-10 mt-10 font-semibold h-fit ">
                 Good {timeOfDay}, {user.userName}!
-                </div>
-                </div>
-                <div className='w-full'>
-                    <div className='flex sticky top-0 bg-slate-50 justify-end gap-x-5 it'>
-          
+                </div> */}
+                <div className='md:w-full   '>
+                    <div className=' px-2  it'>
+                        <div className="  justify-end gap-x-5 flex items-center">
+                        
+                            
                    <div className="border-2 mt-5  items-center flex gap-x-1 p-2 px-4 cursor-pointer font-semibold rounded-lg">
                        <FaUser /><div className="hidden md:flex"> Account</div>
                    </div>
-                   <div className="border-2 mt-5 p-3 py-6 font-semibold cursor-pointer rounded-full">
+                   <div className="border-2 md:text- mt-5 p-3 py-6 font-semibold cursor-pointer rounded-full">
                    &#x20A6; {balance? balance : "0.00"}
                    </div>
+                        </div>
                    </div>
-                   <div className='mt-20'>
+                   <div className='md:mt-20 mt-8 p-2'>
                        <Outlet />
                    </div>
                  </div>

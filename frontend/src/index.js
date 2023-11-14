@@ -20,6 +20,7 @@ import Dash from './components/Dash';
 import Thrifts from './components/Thrifts';
 import Wallet from './pages/Wallet';
 import Join from './pages/Join';
+import Transactions from './pages/Transactions';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -40,6 +41,7 @@ root.render(
           <Route path='thrifts/:id' element={<ThriftDetails />}/>
           <Route path='join/:id' element={<Join />}/>
           <Route path='pay' element={<Wallet />} />
+          <Route path='transactions' element={<Transactions />} />
           
         </Route>
         <Route path='/chats' element={<chats />}/>

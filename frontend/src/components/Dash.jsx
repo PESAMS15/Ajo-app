@@ -10,7 +10,8 @@ const Dash = () => {
  
   return (
     <div>
-      <h1 className=" text-end text-3xl text-gray-700 font-semibold">
+      <h1 className=" text-center text-3xl text-gray-700 font-semibold">
+        hello {user &&  user.userName}!!!
 
       </h1>
     </div>

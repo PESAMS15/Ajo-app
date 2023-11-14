@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 // import allProdSlice from "./allProdSlice";
 import user from "./user";
 import thrifts from "./thrifts";
+import transactions from "./transactions";
 
 
 
@@ -10,7 +11,8 @@ import thrifts from "./thrifts";
     reducer: {
         // counterSlice: counterSlice,
         user, 
-        thrifts
+        thrifts,
+        transactions
         
     }
 })

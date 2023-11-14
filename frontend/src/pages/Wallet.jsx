@@ -24,7 +24,7 @@ const Wallet = () => {
     publicKey,
     text: "Pay Now",
     onSuccess: (response) =>{
-      let url = "http://localhost:6650/thrifts/add"
+      let url = "https://persy-grow-investment.onrender.com/thrifts/add"
       let data = {
         amount,
         userName: user.userName

@@ -22,7 +22,7 @@ function SignIn() {
         password: password,
         email: email
     }
-    let uri = "http://localhost:6650/users/login"
+    let uri = "https://persy-grow-investment.onrender.com/users/login"
     const signin = () => {
         setloader(true)
         console.log(details)

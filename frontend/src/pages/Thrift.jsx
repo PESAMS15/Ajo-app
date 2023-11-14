@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams,  } from 'react-router-dom'
 import Loader from '../components/Loader';
 import { ToastContainer, toast } from 'react-toastify'
+import ShareButton from '../components/ShareButton';
 
 function ThriftDetails({ oke }) {
   const [loader, setloader] = useState(true)
@@ -14,7 +15,7 @@ function ThriftDetails({ oke }) {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:6650/thrifts/thrift/${id}`)
+    axios.get(`https://persy-grow-investment.onrender.com/thrifts/thrift/${id}`)
     .then((res)=> {
       setloader(false)
     setThrift(res.data.thrift)
@@ -36,11 +37,20 @@ function ThriftDetails({ oke }) {
   // }
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="container text-center mx-auto mt-8">
       {loader? <Loader /> :
       <>
-      <h2 className="text-2xl font-bold mb-4">{thrift.thriftName}</h2>
-      <p className="mb-2">Thrift Admin: {thrift.thriftAdmin}</p>
+      <h2 className="text-4xl md:text-center font-bold mb-4">{thrift.thriftName}</h2>
+      <div className="my-4 md:flex font-semibold justify-between">
+      <p className="my-2">Thrift Admin: {thrift.thriftAdmin}</p>
+      <p className='my-2'>Thrift status: {thrift.thriftStatus}</p>
+      </div>
+      <div className='text-start'>
+       <h4 className='text-2xl my-3 font-semibold'> thrift members: </h4>{thrift && thrift.thriftMembers.map((member, index)=>(
+          <p key={index}>{index + 1}. {member}</p>
+        ))}
+      </div>
+      <ShareButton id={thrift._id} thriftName={thrift.thriftName} />
       {/* Display other thrift details as needed */}
       </> 
       }

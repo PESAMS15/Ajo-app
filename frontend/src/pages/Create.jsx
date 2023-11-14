@@ -6,10 +6,12 @@ import Loader from '../components/Loader';
 import { ToastContainer, toast } from 'react-toastify'
 
 const Create = () => {
-  const [selectedPlan, setSelectedPlan] = useState('');
+  
   const [name, setname] = useState("")
   const [id, setid] = useState("")
   const [loader, setloader] = useState(true)
+  const [selectedPlan, setSelectedPlan] = useState("")
+
 
   const [amount, setamount] = useState("")
   const [maxmem, setmaxmem] = useState("")
@@ -23,7 +25,7 @@ const Create = () => {
     
   }
   
-  const uri = "http://localhost:6650/users/verify"
+  const uri = "https://persy-grow-investment.onrender.com/users/verify"
   const token = localStorage.getItem("token")
   // const navigate = useNavigate()
   setInterval(useEffect(() => {
@@ -56,7 +58,7 @@ const Create = () => {
   const handlePlanChange = (event) => {
     setSelectedPlan(event.target.value);
   }
-  let url = "http://localhost:6650/thrifts/create"
+  let url = "https://persy-grow-investment.onrender.com/thrifts/create"
   const creat = ()=>{
         setloader(true)
          console.log(details)
@@ -69,11 +71,12 @@ const Create = () => {
           console.log(id)
           // alert(res.data.message)
           toast.success(res.data.message)
+          setTimeout(() => {
+            navigate(`/dashboard/thrifts`)
+          }, 4000)
           
         })
-        .then(setInterval(() => {
-          navigate(`/dashboard/thrifts`)
-        }, 4000))
+        
         .catch((err)=>{
           setloader(false)
           // alert(err.response.data.message)  
@@ -96,8 +99,8 @@ const Create = () => {
                 <select value={selectedPlan} onChange={handlePlanChange} className="bg-indigo-100 block outline-none rounded-2xl w-full py-4 px-2 pr-4 my-2">
                     <option value="" disabled selected>Select a plan</option>
                     <option value="daily">Daily Plan</option>
+                    <option value="weekly">Weekly Plan</option>
                     <option value="monthly">Monthly Plan</option>
-                    <option value="yearly">Yearly Plan</option>
                 </select>
                 </div>
 

@@ -21,7 +21,7 @@ function App() {
     password: password,
     email: email
   }
-  let uri = "http://localhost:6650/users/signup"
+  let uri = "https://persy-grow-investment.onrender.com/users/signup"
   const signup = () => {
     setloader(true)
     console.log(details)

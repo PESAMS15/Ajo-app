@@ -18,7 +18,7 @@ function Join({ oke }) {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:6650/thrifts/thrift/${id}`)
+    axios.get(`https://persy-grow-investment.onrender.com/thrifts/thrift/${id}`)
     .then((res)=> {
       setloader(false)
     setThrift(res.data.thrift)
@@ -37,7 +37,7 @@ function Join({ oke }) {
   
   const joinTh =()=>{
     setloader(true)
-    axios.post(`http://localhost:6650/thrifts/join`, {memberName: user.userName, thriftId: id})
+    axios.post(`https://persy-grow-investment.onrender.com/thrifts/join`, {memberName: user.userName, thriftId: id})
     .then((res)=> {
       setloader(false)
       toast.success(res.data.message)
@@ -57,10 +57,13 @@ function Join({ oke }) {
     <div className="container mx-auto mt-8">
       {loader? <Loader /> :
       <>
-      <h2 className="text-2xl font-bold mb-4">Are you sure you want to join  {thrift.thriftName}.</h2>
+      <h2 className="text-3xl text-center font-bold mb-4">Are you sure you want to join  {thrift && thrift.thriftName}?</h2>
       {/* <p className="mb-2">Thrift Admin: {thrift.thriftAdmin}</p> */}
-      <button onClick={joinTh} className='py-3 my-2 p-2 bg-black text-white '>Join Thrift</button>
+      <button onClick={joinTh} className='py-3 my-2 txt-center mx-auto p-2 bg-blue-900 rounded  block text-white '>Join Thrift</button>
       {/* Display other thrift details as needed */}
+      <h1>About Thrift</h1>
+      <h3>Thrift Admin: {thrift && thrift.thriftAdmin}</h3>
+      <h3>{thrift && thrift.thriftMembers.length}  {thrift && thrift.thriftMembers ===1? "memebr is" : "members are"} already in {thrift && thrift.thriftName} </h3>
       </> 
       }
       <ToastContainer 
